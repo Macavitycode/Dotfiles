@@ -1,0 +1,8 @@
+[Desktop Entry]
+Version=1.0
+Name=Whatsapp web
+Comment=Opens whatsapp web in firefox
+Exec=firefox https://web.whatsapp.com/
+Icon=utilities-terminal
+Type=Application
+Categories=Application

@@ -1,0 +1,8 @@
+[Desktop Entry]
+Version=1.0
+Name=Clock
+Comment=Test the terminal running a command inside it
+Exec=gnome-terminal -x tty-clock -c -b
+Icon=utilities-terminal
+Type=Application
+Categories=Application

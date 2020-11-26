@@ -1,0 +1,7 @@
+[Desktop Entry]
+Version=1.0
+Name=wallpaper-random
+Exec=nitrogen --set-scaled --random &
+Icon=utilities-terminal
+Type=Application
+Categories=Application

@@ -1,4 +1,4 @@
-# Ubuntu i3 config
+# Dotfiles
 
 This repo is to help me keep track of the modifications made to ubuntu by me.
 I use the i3 window manager and neovim with the dotfiles as mentioned in dotfiles.
@@ -17,7 +17,7 @@ zsh-theme-powerlevel9k`
 
 Random tidbits I found important kept here
 
-### Generating a list of manually installed programs
+### Generating a list of manually installed programs in ubuntu
 
 `comm -23 <(apt-mark showmanual | sort -u) <(gzip -dc /var/log/installer/initial
 -status.gz | sed -n 's/^Package: //p' | sort -u)`

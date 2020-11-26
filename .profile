@@ -32,3 +32,4 @@ if [ -d "$HOME/.Xmodmap" ] ; then
 fi
 
 # xmodmap ~/.xmodmap
+export EDITOR=/usr/bin/nvim

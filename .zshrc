@@ -38,6 +38,20 @@ zstyle ':completion:*:kill:*' command 'ps -u $USER -o pid,%cpu,tty,cputime,cmd'
 source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source /usr/share/powerlevel9k/powerlevel9k.zsh-theme
 
+# FOR FLUTTER APPDEV
+export PATH="$PATH:/home/shashankmoghe/Downloads/flutter/bin:/home/shashankmoghe/Downloads/android-studio/bin"
+
+# FOR ANDROID SCREEN SHARE WITH SCRCPY
+alias ss="setsid scrcpy &>/dev/null"
+
+alias android-studio="~/Downloads/android-studio/bin/studio.sh"
+
+# FOR GO
+export PATH=$PATH:/usr/local/go/bin
+
+# FOR CORDLESS
+alias cordless="~/.cache/cordless/cordless"
+
 # Customise the Powerlevel9k prompts
 POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(
   dir
@@ -49,5 +63,12 @@ POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(
 )
 POWERLEVEL9K_PROMPT_ADD_NEWLINE=false
 source /opt/ros/melodic/setup.zsh
-source ~/projects/eyantra-ros/catkin_ws/devel/setup.zsh
+alias tk="rosrun teleop_twist_keyboard teleop_twist_keyboard.py"
+alias e="clear; exit"
+
+# FOR ROS
+# source ~/projects/eyantra-ros/catkin_ws/devel/setup.zsh
 # source ~/catkin_ws/devel/setup.zsh
+# source ~/projects/soham-eyantra/catkin_ws/devel/setup.zsh
+source ~/projects/ros-urdf-basics/devel/setup.zsh
+

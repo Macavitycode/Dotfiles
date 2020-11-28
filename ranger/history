@@ -1,5 +1,4 @@
 search rang
-search con
 search range
 search ran
 rename 
@@ -15,7 +14,6 @@ shell
 search wal
 search tm
 rename .git
-open_with nvim
 search pro
 rename eyantra_drone
 search pr
@@ -25,10 +23,24 @@ touch all.launch
 open_with vim
 rename all.launch
 search ued
-delete
 rename b2.xacro
 search ur
 search .con
 search nvi
 search in'
 search in
+vim
+nvim
+delete
+cd /usr/share/
+search pol
+open_with 
+trash
+open_with nvim
+search con
+vim hide-polybar
+nvim hide-polybar
+touch hide-polybar.sh
+search bs
+search sx
+chmod +x

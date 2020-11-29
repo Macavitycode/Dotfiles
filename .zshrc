@@ -1,22 +1,18 @@
-# Set up the prompt
-
-autoload -Uz promptinit
-promptinit
-prompt adam1
-
-setopt histignorealldups sharehistory
-
-# Use emacs keybindings even if our EDITOR is set to vi
-bindkey -e
-
-# Keep 1000 lines of history within the shell and save it to ~/.zsh_history:
+# Lines configured by zsh-newuser-install
+HISTFILE=~/.histfile
 HISTSIZE=1000
 SAVEHIST=1000
-HISTFILE=~/.zsh_history
+setopt autocd extendedglob nomatch notify
+unsetopt beep
+bindkey -v
+# End of lines configured by zsh-newuser-install
+# The following lines were added by compinstall
+zstyle :compinstall filename '/home/shashank/.zshrc'
 
-# Use modern completion system
 autoload -Uz compinit
 compinit
+# End of lines added by compinstall
+
 
 zstyle ':completion:*' auto-description 'specify: %d'
 zstyle ':completion:*' completer _expand _complete _correct _approximate
@@ -33,26 +29,15 @@ zstyle ':completion:*' select-prompt %SScrolling active: current selection at %p
 zstyle ':completion:*' use-compctl false
 zstyle ':completion:*' verbose true
 
+export PATH="${PATH}:${HOME}/.local/bin/"
+
 zstyle ':completion:*:*:kill:*:processes' list-colors '=(#b) #([0-9]#)*=0=01;31'
 zstyle ':completion:*:kill:*' command 'ps -u $USER -o pid,%cpu,tty,cputime,cmd'
-source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-source /usr/share/powerlevel9k/powerlevel9k.zsh-theme
 
-# FOR FLUTTER APPDEV
-export PATH="$PATH:/home/shashankmoghe/Downloads/flutter/bin:/home/shashankmoghe/Downloads/android-studio/bin"
+source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source /usr/share/zsh-theme-powerlevel9k/powerlevel9k.zsh-theme
 
-# FOR ANDROID SCREEN SHARE WITH SCRCPY
-alias ss="setsid scrcpy &>/dev/null"
-
-alias android-studio="~/Downloads/android-studio/bin/studio.sh"
-
-# FOR GO
-export PATH=$PATH:/usr/local/go/bin
-
-# FOR CORDLESS
-alias cordless="~/.cache/cordless/cordless"
-
-# Customise the Powerlevel9k prompts
+# POWERLINE 9K config
 POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(
   dir
   vcs
@@ -62,13 +47,15 @@ POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(
   virtualenv
 )
 POWERLEVEL9K_PROMPT_ADD_NEWLINE=false
-source /opt/ros/melodic/setup.zsh
-alias tk="rosrun teleop_twist_keyboard teleop_twist_keyboard.py"
+
+
+# run neofetch on start
+neofetch
+
+# Aliases
+alias ss="setsid scrcpy &>/dev/null"
 alias e="clear; exit"
+alias vim="nvim"
 
-# FOR ROS
-# source ~/projects/eyantra-ros/catkin_ws/devel/setup.zsh
-# source ~/catkin_ws/devel/setup.zsh
-# source ~/projects/soham-eyantra/catkin_ws/devel/setup.zsh
-source ~/projects/ros-urdf-basics/devel/setup.zsh
-
+# pywal
+(cat ~/.cache/wal/sequences &)

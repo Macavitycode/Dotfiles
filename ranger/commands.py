@@ -59,3 +59,17 @@ class my_edit(Command):
         # This is a generic tab-completion function that iterates through the
         # content of the current directory.
         return self._tab_directory_content()
+
+
+class set_wall(Command):
+    """
+    :set_wall
+    runs pywal on the given selection
+    """
+
+    def execute(self):
+        command = "wal -q -i " + str(self.fm.thisfile.basename)
+        os.system(command)
+        self.fm.notify("Set as background")
+
+

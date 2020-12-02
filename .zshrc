@@ -56,6 +56,11 @@ neofetch
 alias ss="setsid scrcpy &>/dev/null"
 alias e="clear; exit"
 alias vim="nvim"
+alias jp="setsid jupyter notebook &>/dev/null"
 
 # pywal
 (cat ~/.cache/wal/sequences &)
+
+# ROS
+alias rc="sudo docker run -it ros:melodic"
+alias rcp="sudo docker ps -l"

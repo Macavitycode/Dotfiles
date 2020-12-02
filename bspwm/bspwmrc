@@ -4,7 +4,7 @@
 sudo dhcpcd
 export EDITOR="nvim"
 
-picom -f -b -o 1 &
+picom -f -b -m 1.0 &
 nitrogen --restore &
 pgrep -x sxhkd > /dev/null || sxhkd &
 setxkbmap -option caps:escape

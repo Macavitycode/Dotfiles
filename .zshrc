@@ -34,8 +34,9 @@ export PATH="${PATH}:${HOME}/.local/bin/"
 zstyle ':completion:*:*:kill:*:processes' list-colors '=(#b) #([0-9]#)*=0=01;31'
 zstyle ':completion:*:kill:*' command 'ps -u $USER -o pid,%cpu,tty,cputime,cmd'
 
-source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-source /usr/share/zsh-theme-powerlevel9k/powerlevel9k.zsh-theme
+source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source /usr/share/powerlevel9k/powerlevel9k.zsh-theme
+source /usr/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 
 # POWERLINE 9K config
 POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(
@@ -59,8 +60,12 @@ alias vim="nvim"
 alias jp="setsid jupyter notebook &>/dev/null"
 
 # pywal
-(cat ~/.cache/wal/sequences &)
+# (cat ~/.cache/wal/sequences &)
 
-# ROS
-alias rc="sudo docker run -it ros:melodic"
-alias rcp="sudo docker ps -l"
+# ROS docker
+# alias rc="sudo docker run -it ros:melodic"
+# alias rcp="sudo docker ps -l"
+
+# ROS (local)
+# source
+

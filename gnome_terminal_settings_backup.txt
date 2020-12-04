@@ -9,8 +9,8 @@ scroll-on-output=true
 use-transparent-background=true
 use-theme-colors=false
 use-theme-transparency=false
-background-color='rgb(43,52,59)'
-background-transparency-percent=11
+background-color='rgb(29,43,54)'
+background-transparency-percent=5
 audible-bell=false
 
 [legacy]

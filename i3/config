@@ -263,6 +263,7 @@ mode "$mode_gaps_outer" {
 exec_always --no-startup-id ~/.config/i3/scripts/auto_tiling.py &
 exec_always nitrogen --restore &
 exec_always --no-startup-id compton -f -b &
+exec_always --no-startup-id setxkbmap -option caps:escape &
 
 bindsym $mod+b exec "firefox --new-window --private-window"
 bindsym $mod+Shift+b exec "firefox --new-window"

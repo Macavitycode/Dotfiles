@@ -16,4 +16,5 @@
     "python.linting.pylintArgs": [
         "--extension-pkg-whitelist=cv2"
     ]
+
 }

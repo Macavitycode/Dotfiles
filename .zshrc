@@ -49,6 +49,9 @@ POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(
 )
 POWERLEVEL9K_PROMPT_ADD_NEWLINE=false
 
+# GPU SETTINGS
+# source ~/.config/nvidiasettings
+
 
 # run neofetch on start
 neofetch
@@ -62,10 +65,13 @@ alias jp="setsid jupyter notebook &>/dev/null"
 # pywal
 # (cat ~/.cache/wal/sequences &)
 
-# ROS docker
+# ROS (docker)
 # alias rc="sudo docker run -it ros:melodic"
 # alias rcp="sudo docker ps -l"
 
 # ROS (local)
-# source
+source /opt/ros/melodic/setup.zsh
+
+# ROS (Project based)
+source ~/projects/ros-urdf-basics/devel/setup.zsh
 

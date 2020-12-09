@@ -1,9 +1,3 @@
-?\
-shell 
-search wal
-search tm
-rename .git
-search pro
 rename eyantra_drone
 search pr
 search dron
@@ -48,3 +42,9 @@ open_with
 open_with vim
 open_with nvim
 find 
+find p
+shell nitrogen --set-bg --auto %s
+shell nitrogen --set-auto %s
+find ra
+find d
+find wa

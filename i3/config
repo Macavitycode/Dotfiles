@@ -274,7 +274,7 @@ bindsym $mod+Shift+f exec "nautilus"
 # Screenshot of region
 # bindsym --release $mod+Shift+s exec "~/.config/i3/scripts/ss.sh -s /dev/null"
 # bindsym --release $mod+Shift+Control+s exec "~/.config/i3/scripts/ss.sh -s ~/scrot/"
-bindsym --release $mod+Shift+s exec "~/.config/i3/scripts/ss.sh -s ~/scrot/"
+bindsym --release $mod+Shift+s exec "~/.config/i3/scripts/ss.sh -s ~/Pictures/Screenshots"
 
 
 # Always floating windows
@@ -282,8 +282,10 @@ for_window [class="Pavucontrol" instance="pavucontrol"] floating enable
 for_window [class="Nautilus" instance="nautilus"] floating enable
 for_window [class="Nitrogen" instance="nitrogen"] floating enable
 for_window [class="scrcpy" instance="scrcpy"] floating enable
-for_window [class="Minecraft Launcher" instance="minecraft-launcher"] floating enable
+for_window [class="minecraft-launcher" instance="Minecraft Launcher"] floating enable
+for_window [class="Minecraft 1.16.4" instance="Minecraft 1.16.4"] floating enable
 for_window [class="Steam" instance="Steam"] floating enable
 for_window [class="Karlson_linux.x86_64" instance="Karlson_linux.x86_64"] floating enable
+for_window [class="gazebo" instance="gazebo"] floating enable
 
 

@@ -1,6 +1,0 @@
-{
-  "dependencies": {
-    "coc-python": ">=1.2.13",
-    "coc-xml": ">=1.14.0"
-  }
-}

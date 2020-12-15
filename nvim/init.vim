@@ -1,5 +1,4 @@
 "#############################################################################
-"
 "  _       _ _         _           
 " (_)     (_) |       (_)          
 "  _ _ __  _| |___   ___ _ __ ___  
@@ -212,9 +211,6 @@ nnoremap <silent><leader>t :call ToggleNetrw()<CR>
 " Toggles Undotree with Ctrl+z
 nnoremap <C-z> :UndotreeToggle<CR>
 
-" Goto definition
-nnoremap <leader>g :YcmCompleter GoTo<CR>
-
 " Close current buffer with Ctrl+x
 nnoremap <C-x> :q<CR>
 
@@ -228,6 +224,10 @@ nnoremap <esc><esc> :let @/=""<CR>
 " Tab to autocomplete
 " imap <Tab> <C-P>
 
+nmap <silent> \gt :vsp<CR><Plug>(coc-definition)<C-W>T
+
+" TERMINAL MODE REMAP
+tnoremap <Esc><Esc> <C-\><C-n>
 
 " Command remaps
 "-----------------------------------------------------------------------------
@@ -244,4 +244,4 @@ nnoremap <esc><esc> :let @/=""<CR>
 
 " This sets all tab related stuff to 2 for xml files
 autocmd FileType xml setlocal expandtab shiftwidth=2 softtabstop=2 tabstop=2
-
+autocmd FileType c nnoremap <leader>c :!clear && gcc % -o %< && ./%< <CR>

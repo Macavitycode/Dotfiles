@@ -1,20 +1,3 @@
-rename eyantra_drone
-search pr
-search dron
-search s
-touch all.launch
-rename all.launch
-search ued
-rename b2.xacro
-search ur
-search .con
-search nvi
-search in'
-search in
-vim
-nvim
-cd /usr/share/
-search pol
 trash
 search con
 vim hide-polybar
@@ -32,19 +15,36 @@ set_wall
 wal -r
 source ~/.local/bin
 source ~/.local/bin/
-
 search 
-delete
 search wa
 rename t3
 touch macros.xacro
 open_with 
-open_with vim
 open_with nvim
 find 
 find p
 shell nitrogen --set-bg --auto %s
-shell nitrogen --set-auto %s
 find ra
 find d
 find wa
+open_with zathura
+shell nitrogen --set-auto %s
+open_with%space
+mkdir 
+mkdir config
+open_with vim
+mkdir launch
+touch dynamic.launch
+paste dest=dynamic.launch
+rename spawn.launch
+
+rename dynamic.launch
+mkdir src
+touch generater.py
+rename gen.launch
+touch gen.cpp
+mkdir scripts
+touch gen.py
+delete
+mkdir urdf
+rename b0.urdf

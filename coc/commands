@@ -1,0 +1,3 @@
+python.setShebangInterpreter
+python.setInterpreter
+clangd.install

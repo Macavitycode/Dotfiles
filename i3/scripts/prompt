@@ -1,3 +1,3 @@
-#!/bin/sh
+#!/bin/bash
 # A dmenu prompt script
-[ $(echo -e "No\nYes" | dmenu -i -p "$1" -nb '#1B2224' -nf '#2EB398' -sb '#2EB398' -sf '#1B2224') \== "Yes" ] && $2
+[ $(echo -e "No\nYes" | dmenu -i -p "$1" -nb '#1B2224' -nf '#2EB398' -sb '#2EB398' -sf '#1B2224') == "Yes" ] && $2

@@ -61,6 +61,7 @@ alias ss="setsid scrcpy &>/dev/null"
 alias e="clear; exit"
 alias vim="nvim"
 alias jp="setsid jupyter notebook &>/dev/null"
+alias kgz="killall gzclient gzserver"
 
 # pywal
 # (cat ~/.cache/wal/sequences &)
@@ -73,5 +74,7 @@ alias jp="setsid jupyter notebook &>/dev/null"
 source /opt/ros/melodic/setup.zsh
 
 # ROS (Project based)
-source ~/projects/ros-urdf-basics/devel/setup.zsh
+# source ~/projects/ros-urdf-basics/devel/setup.zsh
+# source ~/projects/lemons/devel/setup.zsh
+source ~/projects/spawnfromyaml/devel/setup.zsh
 

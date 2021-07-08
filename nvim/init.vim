@@ -28,74 +28,16 @@ call plug#begin('~/.config/nvim/autoload/plugged')
     Plug 'mbbill/undotree'              " Gives a file changes tree
     Plug 'itchyny/lightline.vim'        " Status line plugin
     Plug 'crusoexia/vim-monokai'        " Monokai colorshceme
-    Plug 'patstockwell/vim-monokai-tasty' " Monokai tasty
     Plug 'preservim/nerdcommenter'      " Commenter
     Plug 'jiangmiao/auto-pairs'         " Gives automatic bracket pairs
-    Plug 'prettier/vim-prettier', {'do': 'npm install',
-    \ 'for': ['javascript', 'typescript', 'css', 'scss', 'json',
-    \ 'markdown', 'yaml', 'html']}
 
     Plug 'neovim/nvim-lspconfig'
     Plug 'hrsh7th/nvim-compe'
+    " Plug 'nvim-lua/completion-nvim'
+    Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+    Plug 'nvim-treesitter/playground'
 
 call plug#end()
-
-
-" Plugin settings
-"-----------------------------------------------------------------------------
-
-let g:monokai_term_italic = 0           " Disables comment italics
-let g:monokai_gui_italic = 0            " Disables comment italics for gui
-
-
-let g:NERDCreateDefaultMappings = 1
-let g:NERDSpaceDelims = 1
-let g:NERDCompactSexyComs = 1
-let g:NERDDefaultAlign = 'left'
-let g:NERDAltDelims_java = 1
-let g:NERDAltDelims_xml = 1
-let g:NERDCustomDelimiters = { 'c': { 'left': '/**','right': '*/' } }
-let g:NERDCommentEmptyLines = 1
-let g:NERDTrimTrailingWhitespace = 1
-let g:NERDToggleCheckAllLines = 1
-
-nnoremap <C-_> :call NERDComment(0,"toggle")<CR>
-vnoremap <C-_> :call NERDComment(0,"toggle")<CR>
-
-
-" LSP Settings
-"-----------------------------------------------------------------------------
-
-let g:compe = {}
-let g:compe.enabled = v:true
-let g:compe.autocomplete = v:true
-let g:compe.debug = v:false
-let g:compe.min_length = 1
-let g:compe.preselect = 'enable'
-let g:compe.throttle_time = 80
-let g:compe.source_timeout = 200
-let g:compe.incomplete_delay = 400
-let g:compe.max_abbr_width = 100
-let g:compe.max_kind_width = 100
-let g:compe.max_menu_width = 100
-let g:compe.documentation = v:true
-
-let g:compe.source = {}
-let g:compe.source.path = v:true
-let g:compe.source.buffer = v:true
-let g:compe.source.calc = v:true
-let g:compe.source.nvim_lsp = v:true
-let g:compe.source.nvim_lua = v:true
-let g:compe.source.vsnip = v:true
-let g:compe.source.ultisnips = v:true
-
-luafile ~/.config/nvim/LSPs/lspython.lua
-luafile ~/.config/nvim/LSPs/lsyamlls.lua
-luafile ~/.config/nvim/LSPs/lsvimls.lua
-luafile ~/.config/nvim/LSPs/lscmake.lua
-luafile ~/.config/nvim/LSPs/lscland.lua
-luafile ~/.config/nvim/LSPs/lsbash.lua
-
 
 
 " Vim settings
@@ -130,6 +72,78 @@ set clipboard+=unnamedplus
 filetype plugin on
 
 
+" Plugin settings
+"-----------------------------------------------------------------------------
+
+let g:monokai_term_italic = 0           " Disables comment italics
+let g:monokai_gui_italic = 0            " Disables comment italics for gui
+
+let g:NERDCreateDefaultMappings = 1
+let g:NERDSpaceDelims = 1
+let g:NERDCompactSexyComs = 1
+let g:NERDDefaultAlign = 'left'
+let g:NERDAltDelims_java = 1
+let g:NERDAltDelims_xml = 1
+let g:NERDCustomDelimiters = { 'c': { 'left': '/**','right': '*/' } }
+let g:NERDCommentEmptyLines = 1
+let g:NERDTrimTrailingWhitespace = 1
+let g:NERDToggleCheckAllLines = 1
+
+nnoremap <C-_> :call NERDComment(0,"toggle")<CR>
+vnoremap <C-_> :call NERDComment(0,"toggle")<CR>
+
+
+" LSP Settings
+"-----------------------------------------------------------------------------
+
+let g:compe = {}
+let g:compe.enabled = v:true
+let g:compe.autocomplete = v:true
+let g:compe.debug = v:false
+let g:compe.min_length = 1
+let g:compe.preselect = 'enable'
+let g:compe.throttle_time = 80
+let g:compe.source_timeout = 200
+let g:compe.resolve_timeout = 800
+let g:compe.incomplete_delay = 400
+let g:compe.max_abbr_width = 100
+let g:compe.max_kind_width = 100
+let g:compe.max_menu_width = 100
+let g:compe.documentation = v:true
+
+let g:compe.source = {}
+let g:compe.source.path = v:true
+let g:compe.source.buffer = v:true
+let g:compe.source.calc = v:true
+let g:compe.source.nvim_lsp = v:true
+let g:compe.source.nvim_lua = v:true
+let g:compe.source.vsnip = v:true
+let g:compe.source.ultisnips = v:true
+let g:compe.source.luasnip = v:true
+
+
+" Set completeopt to have a better completion experience
+set completeopt=menuone,noinsert,noselect
+
+" Avoid showing message extra message when using completion
+set shortmess+=c
+
+lua require'lspconfig'.yamlls.setup{}
+lua require'lspconfig'.vimls.setup{}
+lua require'lspconfig'.cmake.setup{}
+lua require'lspconfig'.clangd.setup{}
+lua require'lspconfig'.bashls.setup{}
+lua require'lspconfig'.pyright.setup{}
+" lua require'lspconfig'.jedi_language_server.setup{}
+
+inoremap <silent><expr> <C-Space> compe#complete()
+inoremap <silent><expr> <CR>      compe#confirm('<CR>')
+inoremap <silent><expr> <C-e>     compe#close('<C-e>')
+inoremap <silent><expr> <C-f>     compe#scroll({ 'delta': +4 })
+inoremap <silent><expr> <C-d>     compe#scroll({ 'delta': -4 })
+
+highlight link CompeDocumentation NormalFloat
+
 " Remaps
 "-----------------------------------------------------------------------------
 
@@ -150,13 +164,11 @@ imap <C-s> <Esc>:retab<CR>:w<CR>
 nnoremap <esc><esc> :let @/=""<CR>
 tnoremap <Esc><Esc> <C-\><C-n>
 
-imap <Tab> <C-N>
 nnoremap <silent> <leader>gd <cmd>lua vim.lsp.buf.definition()<CR>
 nnoremap <silent> <leader>gD <cmd>lua vim.lsp.buf.declaration()<CR>
 nnoremap <silent> <leader>gr <cmd>lua vim.lsp.buf.references()<CR>
 nnoremap <silent> <leader>gi <cmd>lua vim.lsp.buf.implementation()<CR>
 nnoremap <silent> K <cmd>lua vim.lsp.buf.hover()<CR>
-nnoremap <silent> <C-k> <cmd>lua vim.lsp.buf.signature_help()<CR>
 nnoremap <silent> <C-n> <cmd>lua vim.lsp.diagnostic.goto_prev()<CR>
 nnoremap <silent> <C-p> <cmd>lua vim.lsp.diagnostic.goto_next()<CR>
 
@@ -171,3 +183,17 @@ autocmd FileType c nnoremap <leader>c :!clear && gcc % -o %< && ./%< <CR>
 " auto-format
 autocmd BufWritePre *.py lua vim.lsp.buf.formatting_sync(nil, 100)
 
+
+" Tree Sitter specific
+" ----------------------------------------------------------------------------
+
+lua <<EOF
+require'nvim-treesitter.configs'.setup {
+  ensure_installed = "maintained", -- one of "all", "maintained" (parsers with maintainers), or a list of languages
+  ignore_install = {}, -- List of parsers to ignore installing
+  highlight = {
+    enable = true,              -- false will disable the whole extension
+    disable = { "rust" },  -- list of language that will be disabled
+  },
+}
+EOF

@@ -134,6 +134,7 @@ lua require'lspconfig'.cmake.setup{}
 lua require'lspconfig'.clangd.setup{}
 lua require'lspconfig'.bashls.setup{}
 lua require'lspconfig'.pyright.setup{}
+lua require'lspconfig'.texlab.setup{}
 " lua require'lspconfig'.jedi_language_server.setup{}
 
 inoremap <silent><expr> <C-Space> compe#complete()
@@ -182,6 +183,8 @@ autocmd FileType c nnoremap <leader>c :!clear && gcc % -o %< && ./%< <CR>
 
 " auto-format
 autocmd BufWritePre *.py lua vim.lsp.buf.formatting_sync(nil, 100)
+autocmd BufWritePost *.tex silent! execute "!pdflatex % >/dev/null 2>&1"
+autocmd BufWritePost *.md silent! execute "!pdflatex % >/dev/null 2>&1"
 
 
 " Tree Sitter specific

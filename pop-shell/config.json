@@ -1,0 +1,93 @@
+{
+  "float": [
+    {
+      "class": "pop-shell-example",
+      "title": "pop-shell-example"
+    },
+    {
+      "class": "Grub-customizer"
+    },
+    {
+      "class": "Gnome-calculator"
+    },
+    {
+      "class": "joint_state_publisher_gui"
+    },
+    {
+      "class": "rviz"
+    },
+    {
+      "class": "gazebo"
+    },
+    {
+      "class": "Gnome-system-monitor"
+    },
+    {
+      "class": "Pavucontrol"
+    },
+    {
+      "class": "torbrowser-launcher"
+    },
+    {
+      "class": "scrcpy"
+    },
+    {
+      "class": "PlotJuggler-3"
+    },
+    {
+      "class": "balena-etcher-electron"
+    },
+    {
+      "class": "Mavproxy.py"
+    },
+    {
+      "class": "XTerm"
+    },
+    {
+      "class": "Mainline-gtk"
+    },
+    {
+      "class": "rqt_graph"
+    },
+    {
+      "class": "turtlesim_node"
+    },
+    {
+      "class": "Arandr"
+    },
+    {
+      "class": "rqt_controller_manager"
+    },
+    {
+      "class": "rqt_gui"
+    },
+    {
+      "class": "mpv"
+    },
+    {
+      "class": "Eog"
+    },
+    {
+      "class": "Blender"
+    },
+    {
+      "class": "Gimp-2.10"
+    },
+    {
+      "class": "obsidian"
+    },
+    {
+      "class": "Uget-gtk"
+    },
+    {
+      "class": "Gnome-control-center"
+    },
+    {
+      "class": "Software-properties-gtk"
+    }
+  ],
+  "skiptaskbarhidden": [],
+  "log_on_focus": false,
+  "move_pointer_on_switch": false,
+  "default_pointer_position": "TOP_LEFT"
+}

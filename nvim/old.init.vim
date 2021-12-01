@@ -31,13 +31,11 @@ call plug#begin('~/.config/nvim/autoload/plugged')
     Plug 'preservim/nerdcommenter'      " Commenter
     Plug 'jiangmiao/auto-pairs'         " Gives automatic bracket pairs
 
-    " Plug 'neovim/nvim-lspconfig'
-    " Plug 'hrsh7th/nvim-compe'
+    Plug 'neovim/nvim-lspconfig'
+    Plug 'hrsh7th/nvim-compe'
     " Plug 'nvim-lua/completion-nvim'
     Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
     Plug 'nvim-treesitter/playground'
-
-    Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
     " Plug 'taketwo/vim-ros'
 
@@ -93,13 +91,77 @@ let g:NERDCommentEmptyLines = 1
 let g:NERDTrimTrailingWhitespace = 1
 let g:NERDToggleCheckAllLines = 1
 
-nnoremap <C-_> :call nerdcommenter#Comment(0,"toggle")<CR>
-vnoremap <C-_> :call nerdcommenter#Comment(0,"toggle")<CR>
+nnoremap <C-_> :call NERDComment(0,"toggle")<CR>
+vnoremap <C-_> :call NERDComment(0,"toggle")<CR>
+
 
 " LSP Settings
 "-----------------------------------------------------------------------------
 
+let g:compe = {}
+let g:compe.enabled = v:true
+let g:compe.autocomplete = v:true
+let g:compe.debug = v:false
+let g:compe.min_length = 1
+let g:compe.preselect = 'enable'
+let g:compe.throttle_time = 80
+let g:compe.source_timeout = 200
+let g:compe.resolve_timeout = 800
+let g:compe.incomplete_delay = 400
+let g:compe.max_abbr_width = 100
+let g:compe.max_kind_width = 100
+let g:compe.max_menu_width = 100
+let g:compe.documentation = v:true
 
+let g:compe.source = {}
+let g:compe.source.path = v:true
+let g:compe.source.buffer = v:true
+let g:compe.source.calc = v:true
+let g:compe.source.nvim_lsp = v:true
+let g:compe.source.nvim_lua = v:true
+let g:compe.source.vsnip = v:true
+let g:compe.source.ultisnips = v:true
+let g:compe.source.luasnip = v:true
+
+let g:completion_enable_snippet = 'snippets.nvim'
+lua local capabilities = vim.lsp.protocol.make_client_capabilities()
+lua capabilities.textDocument.completion.completionItem.snippetSupport = true
+lua require('lspconfig').clangd.setup {
+            \ on_attach = require 'compe'.on_attach,
+            \ capabilities = capabilities
+            \}
+
+" Set completeopt to have a better completion experience
+set completeopt=menuone,noinsert,noselect
+
+" Avoid showing message extra message when using completion
+set shortmess+=c
+
+lua require'lspconfig'.yamlls.setup{}
+lua require'lspconfig'.vimls.setup{}
+lua require'lspconfig'.cmake.setup{}
+" lua require'lspconfig'.clangd.setup{}
+lua require'lspconfig'.bashls.setup{}
+lua require'lspconfig'.pyright.setup{}
+lua require'lspconfig'.texlab.setup{}
+" lua require'lspconfig'.jedi_language_server.setup{}
+
+" lua require'lspconfig'.ccls.setup {
+"           \ init_options = {
+"               \ compilationDatabaseDirectory = "build";
+"               \ index = {threads = 0;};
+"               \ clang = {excludeArgs = { "-frounding-math"} ;};
+"               \ }
+"           \ }
+
+
+inoremap <silent><expr> <C-Space> compe#complete()
+inoremap <silent><expr> <CR>      compe#confirm('<CR>')
+inoremap <silent><expr> <C-e>     compe#close('<C-e>')
+inoremap <silent><expr> <C-f>     compe#scroll({ 'delta': +4 })
+inoremap <silent><expr> <C-d>     compe#scroll({ 'delta': -4 })
+
+highlight link CompeDocumentation NormalFloat
 
 " Remaps
 "-----------------------------------------------------------------------------
@@ -129,24 +191,21 @@ nnoremap <silent> K <cmd>lua vim.lsp.buf.hover()<CR>
 nnoremap <silent> <C-n> <cmd>lua vim.lsp.diagnostic.goto_prev()<CR>
 nnoremap <silent> <C-p> <cmd>lua vim.lsp.diagnostic.goto_next()<CR>
 
-vmap <leader>f  <Plug>(coc-format-selected)
-nmap <leader>f  <Plug>(coc-format-selected)
-
 
 " Auto Commands
 " ----------------------------------------------------------------------------
 
 " This sets all tab related stuff to 2 for xml files
 autocmd FileType xml setlocal expandtab shiftwidth=2 softtabstop=2 tabstop=2
-" autocmd FileType c nnoremap <leader>c :!clear && gcc % -o %< && ./%< <CR>
+autocmd FileType c nnoremap <leader>c :!clear && gcc % -o %< && ./%< <CR>
 
 " auto-format
 autocmd BufWritePre *.py lua vim.lsp.buf.formatting_sync(nil, 100)
-autocmd BufWritePost *.tex silent! execute "!pdflatex % %.pdf >/dev/null 2>&1"
-autocmd BufWritePost *.md silent! execute "!pandoc % -o %.pdf >/dev/null 2>&1"
+autocmd BufWritePost *.tex silent! execute "!pdflatex % >/dev/null 2>&1"
+autocmd BufWritePost *.md silent! execute "!pdflatex % >/dev/null 2>&1"
 
 " maintain folds
-au BufWinLeave * silent mkview
+au BufWinLeave * mkview
 au BufWinEnter * silent loadview
 
 " Tree Sitter specific

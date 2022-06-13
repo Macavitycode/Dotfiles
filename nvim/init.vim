@@ -28,19 +28,19 @@ call plug#begin('~/.config/nvim/autoload/plugged')
     Plug 'mbbill/undotree'              " Gives a file changes tree
     Plug 'itchyny/lightline.vim'        " Status line plugin
     Plug 'crusoexia/vim-monokai'        " Monokai colorshceme
+    Plug 'tomasr/molokai'               " Molokai colourscheme
     Plug 'preservim/nerdcommenter'      " Commenter
     Plug 'jiangmiao/auto-pairs'         " Gives automatic bracket pairs
-
-    " Plug 'neovim/nvim-lspconfig'
-    " Plug 'hrsh7th/nvim-compe'
-    " Plug 'nvim-lua/completion-nvim'
     Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
-    Plug 'nvim-treesitter/playground'
+    " Tree sitter
+    Plug 'preservim/nerdtree'           " Nerd Tree
 
-    Plug 'neoclide/coc.nvim', {'branch': 'release'}
+    Plug 'francoiscabrol/ranger.vim'    " Ranger in nvim
+    Plug 'rbgrouleff/bclose.vim'        " Ranger Dependancy in nvim
 
     " Plug 'taketwo/vim-ros'
 
+    Plug 'neoclide/coc.nvim', {'branch': 'release'}
 call plug#end()
 
 
@@ -53,7 +53,7 @@ colorscheme monokai                     " Set colorscheme from here
 
 set termguicolors                       " Actual bright color support
 set t_Co=256                            " Support 256 colours in terminal.
-                                        " No comment in the following line (?)
+
 filetype plugin on                      "Checks for filetype
 hi Normal guibg=NONE ctermbg=NONE       
 set laststatus=2 noshowmode             " Always shows status in airline
@@ -72,6 +72,7 @@ set incsearch hlsearch                  " Enables incremental search
 
 set path+=**                            " Allows vim to look through files
 set clipboard+=unnamedplus
+set mouse=a                             " Allows mouse usage in terminal
 
 filetype plugin on
 
@@ -93,12 +94,20 @@ let g:NERDCommentEmptyLines = 1
 let g:NERDTrimTrailingWhitespace = 1
 let g:NERDToggleCheckAllLines = 1
 
+let g:molokai_original = 1
+let g:rehash256 = 1
+
 nnoremap <C-_> :call nerdcommenter#Comment(0,"toggle")<CR>
 vnoremap <C-_> :call nerdcommenter#Comment(0,"toggle")<CR>
 
-" LSP Settings
-"-----------------------------------------------------------------------------
+command! -nargs=0 Prettier :CocCommand prettier.formatFile
+vmap <leader>l  <Plug>(coc-format-selected)
+nmap <leader>l  <Plug>(coc-format-selected)
 
+nnoremap <leader>n :NERDTreeFocus<CR>
+nnoremap <C-n> :NERDTree<CR>
+nnoremap <C-t> :NERDTreeToggle<CR>
+nnoremap <C-f> :NERDTreeFind<CR>
 
 
 " Remaps
@@ -146,8 +155,12 @@ autocmd BufWritePost *.tex silent! execute "!pdflatex % %.pdf >/dev/null 2>&1"
 autocmd BufWritePost *.md silent! execute "!pandoc % -o %.pdf >/dev/null 2>&1"
 
 " maintain folds
-au BufWinLeave * silent mkview
-au BufWinEnter * silent loadview
+" silent au BufWinLeave * silent mkview
+" silent au BufWinEnter * silent loadview
+
+" Exit Vim if NERDTree is the only window remaining in the only tab.
+autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 
+            \ && exists('b:NERDTree') && b:NERDTree.isTabTree() | quit | endif
 
 " Tree Sitter specific
 " ----------------------------------------------------------------------------

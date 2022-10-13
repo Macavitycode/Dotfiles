@@ -31,9 +31,9 @@ call plug#begin('~/.config/nvim/autoload/plugged')
     Plug 'tomasr/molokai'               " Molokai colourscheme
     Plug 'preservim/nerdcommenter'      " Commenter
     Plug 'jiangmiao/auto-pairs'         " Gives automatic bracket pairs
-    Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
-    " Tree sitter
-    Plug 'preservim/nerdtree'           " Nerd Tree
+    " Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+    " Tree sitsudo apt-get install -y nodejster
+    " Plug 'preservim/nerdtree'           " Nerd Tree
 
     Plug 'francoiscabrol/ranger.vim'    " Ranger in nvim
     Plug 'rbgrouleff/bclose.vim'        " Ranger Dependancy in nvim
@@ -165,13 +165,13 @@ autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1
 " Tree Sitter specific
 " ----------------------------------------------------------------------------
 
-lua <<EOF
-require'nvim-treesitter.configs'.setup {
-  ensure_installed = "maintained", -- one of "all", "maintained" (parsers with maintainers), or a list of languages
-  ignore_install = {}, -- List of parsers to ignore installing
-  highlight = {
-    enable = true,              -- false will disable the whole extension
-    disable = { "rust" },  -- list of language that will be disabled
-  },
-}
-EOF
+" lua <<EOF
+" require'nvim-treesitter.configs'.setup {
+"   ensure_installed = "maintained", -- one of "all", "maintained" (parsers with maintainers), or a list of languages
+"   ignore_install = {}, -- List of parsers to ignore installing
+"   highlight = {
+"     enable = true,              -- false will disable the whole extension
+"     disable = { "rust" },  -- list of language that will be disabled
+"   },
+" }
+" EOF

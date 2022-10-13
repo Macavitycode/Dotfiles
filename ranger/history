@@ -1,10 +1,3 @@
-trash
-search con
-vim hide-polybar
-nvim hide-polybar
-touch hide-polybar.sh
-search bs
-search sx
 chmod +x
 rename ranger
 shell echo %s
@@ -48,3 +41,10 @@ touch gen.py
 delete
 mkdir urdf
 rename b0.urdf
+mkdir nvim
+find nv
+find con
+delete 
+find hook
+find ho
+search libvirt
